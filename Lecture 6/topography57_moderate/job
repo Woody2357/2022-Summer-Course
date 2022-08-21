@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -P volta_pilot
+#PBS -j oe
+#PBS -N rnn7071
+#PBS -q volta_gpu
+#PBS -l select=1:ncpus=5:mem=50gb:ngpus=1:mpiprocs=1
+#PBS -l walltime=48:00:00
+cd $PBS_O_WORKDIR;
+np=$(cat ${PBS_NODEFILE} | wc -l);
+image="/app1/common/singularity-img/3.0.0/pytorch_1.0.0_nvcr_19.01_py3.simg"
+singularity exec $image bash << EOF > stdout.$PBS_JOBID 2> stderr.$PBS_JOBID
+python RNNs_last_loss_coslr_real_loss.py --epoch 200 --schedule 40 60 80 90 --lr 0.1  --seq_length 1 --train-batch 500 --checkpoint checkpoint/RNN_train_last_1_coslr_no_average_real_loss_1
+python RNNs_eval.py --seq_length_test 1 --checkpoint RNN_train_last_1_coslr_no_average_real_loss_1
+python RNNs_last_loss_coslr_real_loss.py --epoch 200 --schedule 40 60 80 90 --lr 0.1  --seq_length 20 --train-batch 500 --checkpoint checkpoint/RNN_train_last_20_coslr_no_average_real_loss_1
+python RNNs_eval.py --seq_length_test 20 --checkpoint RNN_train_last_20_coslr_no_average_real_loss_1
+python RNNs_last_loss_coslr_real_loss.py --epoch 200 --schedule 40 60 80 90 --lr 0.1  --seq_length 3 --train-batch 500 --checkpoint checkpoint/RNN_train_last_3_coslr_no_average_real_loss_1
+python RNNs_eval.py --seq_length_test 3 --checkpoint RNN_train_last_3_coslr_no_average_real_loss_1
+python RNNs_last_loss_coslr_real_loss.py --epoch 200 --schedule 40 60 80 90 --lr 0.1  --seq_length 4 --train-batch 500 --checkpoint checkpoint/RNN_train_last_4_coslr_no_average_real_loss_1
+python RNNs_eval.py --seq_length_test 4 --checkpoint RNN_train_last_4_coslr_no_average_real_loss_1
+EOF
