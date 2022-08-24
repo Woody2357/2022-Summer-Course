@@ -398,7 +398,7 @@ def inorder_params(tree, actions, unary_choices):
         else:
             action = action
             tree.key = unary_choices[count][len(unary)+action]
-            count = count + 1
+        count = count + 1
         inorder_params(tree.rightChild, actions, unary_choices)
 
 def get_function_trainable_params(actions, unary_choices):
