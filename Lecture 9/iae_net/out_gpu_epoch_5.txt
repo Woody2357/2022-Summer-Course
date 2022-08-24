@@ -1,0 +1,27 @@
+============== cuda version is ===============
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2019 NVIDIA Corporation
+Built on Wed_Oct_23_19:24:38_PDT_2019
+Cuda compilation tools, release 10.2, V10.2.89
+============== python version is ==============
+Python 3.7.11
+{'sub': 3, 'target_sub': 3, 'ntrain': 1000, 'ntest': 100, 'load_type': 'multi'}
+{'modes': 256, 'width': 64}
+read field: converting to float...
+read field: converting to tensor...
+read field: converting to float...
+read field: converting to tensor...
+building data for case = 2: x_train is of all the grid sizes, x_test is of all the grid sizes
+training shape: x - (8192, 2), y - (8192,)
+testing shape: x - (8192, 2), y - (8192,)
+{'modes': 256, 'width': 64, 'num_d': 1, 'input_channel': 2, 'output_channel': 1, 'size': 1024}
+model will be saved to.. ./results/iae_net_iae_net_burgers_multi.pt
+number of model parameters:  5300873
+saving improved model...
+0 1.9586e+02 2.9377e-01 [0.03468234 0.03456185 0.03439833 0.03417924 0.03389257 0.03354535] 0.001
+1 1.9242e+02 9.8463e-02 [0.0463415  0.04643281 0.04656143 0.04674599 0.04701405 0.04739435] 0.001
+2 1.9257e+02 7.1174e-02 [0.04959808 0.04961991 0.04965941 0.04973437 0.04987208 0.05013953] 0.001
+3 1.9266e+02 3.2264e-02 [0.05976194 0.05967683 0.05955459 0.05938142 0.05913467 0.05880257] 0.001
+saving improved model...
+4 1.9268e+02 3.2048e-02 [0.02019134 0.02021826 0.02025954 0.02032246 0.02042152 0.02058007] 0.001
+best results: 4 0.03204804504662752 0.020322457551956177

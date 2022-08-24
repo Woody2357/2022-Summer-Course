@@ -1,0 +1,2 @@
+# RLCT-v3
+python -u main.py --num-process 8 --save-path '../ctmodel/2pporbfan' --value-clip True  --actor-lr 4e-4 --critic-lr 8e-4 --mini-batch 100 --base-noise 0.0 --lr-decay-rate 0.99 --reconstruct-alg SART --tau 0.005  --RL-alg PPO-RB --train-epoch 20 --use-grad-clip True --use-linear-lr-decay True
